@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Akshata ❄️ 🖤⛄✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heart-float {
+            position: absolute;
+            bottom: -50px;
+            animation: float-up 4s linear infinite;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .heart-float svg {
+            display: block;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .card {
+            background: white;
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        .heart-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 3em;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .message-box {
+            background: linear-gradient(135deg, #fce7f3, #f3e8ff);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        .message-box p {
+            font-size: 1.3em;
+            color: #1f2937;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .question {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ec4899;
+            text-align: center;
+            margin: 20px 0 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.5em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #d1d5db, #9ca3af);
+            color: #374151;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-no:hover {
+            background: linear-gradient(135deg, #9ca3af, #6b7280);
+        }
+
+        .footer {
+            text-align: center;
+            color: #9ca3af;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            animation: bounce 0.5s;
+        }
+
+        .modal-emoji {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .modal-content h2 {
+            font-size: 1.8em;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            font-size: 1.1em;
+            color: #6b7280;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .modal-buttons button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-modal-yes {
+            background: linear-gradient(135deg, #ec4899, #ef4444);
+            color: white;
+        }
+
+        .btn-modal-no {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .success-container {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f472b6 0%, #ef4444 50%, #a855f7 100%);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .success-container.active {
+            display: flex;
+        }
+
+        .success-card {
+            background: white;
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: bounce 0.5s;
+        }
+
+        .sparkle {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        .success-card h1 {
+            font-size: 3.5em;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        .success-card p {
+            font-size: 1.5em;
+            color: #374151;
+            margin: 20px 0;
+        }
+
+        .hearts-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .heart-bounce {
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .question { font-size: 1.5em; }
+            .message-box p { font-size: 1.1em; }
+            .btn-yes { padding: 15px 35px; font-size: 1.2em; }
+            .btn-no { padding: 12px 25px; font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <div class="card">
+            <svg class="heart-icon" viewBox="0 0 24 24" fill="#ef4444">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            
+            <h1>Hey Akshata ❄️! 💕⛄</h1>
+            
+            <div class="message-box">
+                <p>Hey… idk how to start this but I just wanted to be honest today. Ninna jothe iruvaga, time literally slows down. Ninna smile nodidre, nan heart just melts. Every small thing about you – the way you talk, the way you laugh, yours eyes are jus too good to be true – everything feels perfect to me.</p>
+                <p style="margin-top: 15px;">Naanu innu heLbeku andre… I've started liking you, seriously. Not in a casual way, but truly. You make my days lighter and my nights peaceful. Ninna messages barodre nan face mele automatically smile baratte.</p>
+                <p style="margin-top: 15px;">Maybe I'm not perfect, but I promise I'll always treat you right, make you laugh, and stand by you no matter what. I don't expect an answer immediately, just wanted you to know how I actually feel.</p>
+                <p style="margin-top: 15px;">So… will you give me a small place in your world? Because honestly, you already have a huge place in mine 💖</p>
+            </div>
+            
+            <div class="question">Will you be mine? 🌹</div>
+            <div class="subtitle">(ilsmmmmm!!!🥹😊)</div>
+            
+            <div class="buttons">
+                <button class="btn-yes" id="yesBtn" onclick="handleYes()">
+                    ❤️ YES! 💕 ❤️
+                </button>
+                <button class="btn-no" id="noBtn" onclick="handleNo()">No</button>
+            </div>
+            
+            <div class="footer">💝 Made with love, just for you 💝</div>
+        </div>
+    </div>
+
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-emoji">🥺</div>
+            <h2>Confirm madtiya?</h2>
+            <p>Think about all the amazing moments we could share together... Naavu together iro time ashte special iratte! Coffee dates, late-night talks, endless laughter... ☕💬✨</p>
+            <div class="modal-buttons">
+                <button class="btn-modal-yes" onclick="handleModalYes()">
+                    I changed my mind! YES! 💕
+                </button>
+                <button class="btn-modal-no" onclick="handleModalNo()">
+                    Still no 😢
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="success-container" id="successContainer">
+        <div class="success-card">
+            <svg class="sparkle" viewBox="0 0 24 24" fill="#facc15">
+                <path d="M12 2L9 9L2 12L9 15L12 22L15 15L22 12L15 9L12 2Z"/>
+            </svg>
+            <h1>YESSSS! 🎉💕</h1>
+            <p>Naanu thumba khushi! You just made me the happiest person alive! 😍</p>
+            <p>Akshata ❄️, I promise to make every moment special! Pratidina special madteeni! ✨</p>
+            <p>We'll watch Neymar together, celebrate every goal. Naavu together ashte awesome irbeku! ⚽💖</p>
+            <div class="hearts-row">
+                <svg class="heart-icon heart-bounce" viewBox="0 0 24 24" fill="#ef4444" style="animation-delay: 0s;">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <svg class="heart-icon heart-bounce" viewBox="0 0 24 24" fill="#ec4899" style="animation-delay: 0.1s;">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <svg class="heart-icon heart-bounce" viewBox="0 0 24 24" fill="#ef4444" style="animation-delay: 0.2s;">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+        let yesButtonScale = 1;
+
+        const noTexts = [
+            "No",
+            "Confirm madtiya? 🥺",
+            "Neymar fan ge kooda illa? ⚽",
+            "Ondu sala yochne madu... 💔",
+            "Naanu chennagi nodkolteeni 😭",
+            "Pleaseeee🥹🥹 🙏",
+            "Neymar kooda YES antane! 🌟",
+            "Ondu chance kodu pleaseeeeee🥹",
+            "i'll do anything for youu!!!!🥹⛄💕",
+            "Naanu Neymar ange acting madalla 😂",
+            "Innu illa ante? 😭",
+            "Sari, naanu Neymar skills kalthini! ⚽💫"
+        ];
+
+        const confirmationMessages = [
+            {
+                emoji: "🥺",
+                title: "Confirm madtiya?",
+                text: "Think about all the amazing moments we could share together... Naavu together iro time ashte special iratte! late-night talks, endless laughter... ☕💬✨"
+            },
+            {
+                emoji: "⚽",
+                title: "!Football reference alert! 🚨",
+                text: "Just like Neymar dribbles past defenders, naanu kooda ninna heart alli try madteeni. I promise to be your biggest supporter, just like you support Neymar! 💙💛"
+            },
+            {
+                emoji: "😭",
+                title: "Pleaseeeeeeeeee!🥹",
+                text: "But seriously... i am so fukin addicted to you, i really can't live without hearing your voice 🥹🥹"
+            },
+            {
+                emoji: "🌟",
+                title: "Ondu chance kodu please?",
+                text: "I'll be your personal cheerleader, your football buddy. Naanu ninna support madteeni ella vishyakke!Just give us a shot! 💃⚽"
+            },
+            {
+                emoji: "💔",
+                title: "Pleaseeeeeeeeeee pleaseeeeee 🥹🥹",
+                text: "But unlike Neymar's dives, nan feelings 100% real! Come on, even the referee would give this a yellow card for being too harsh! Dayamadi kshamisi! 😂💕"
+            },
+            {
+                emoji: "🥹",
+                title: "Seriously? Innu no ante?",
+                text: "Naanu everyday ninna bagge yochne madteeni. Your smile, your laugh, everything! Just imagine us watching Neymar play together, cheering, celebrating... Wouldn't that be amazing? 🎉⚽"
+            },
+            {
+                emoji: "⛄",
+                title: "Okay fine, last try madteeni!",
+                text: "I promise naanu best boyfriend irbeku. We'll go to football matches, I'll get you Neymar jerseys, support your dreams, we will listen to Justin Biber, The Neighbourhood ❄️"
+            }
+        ];
+
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart-float';
+            heart.innerHTML = '<svg width="30" height="30" viewBox="0 0 24 24" fill="white" opacity="0.7"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+            document.getElementById('mainContainer').appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        setInterval(createFloatingHeart, 500);
+
+        function createSuccessHearts() {
+            const container = document.getElementById('successContainer');
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.style.position = 'absolute';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = Math.random() * 100 + '%';
+                    heart.style.animation = 'pulse 1s ease-in-out infinite';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    heart.innerHTML = '<svg width="' + (20 + Math.random() * 30) + '" height="' + (20 + Math.random() * 30) + '" viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+                    container.appendChild(heart);
+                }, i * 20);
+            }
+        }
+
+        function handleYes() {
+            document.getElementById('mainContainer').style.display = 'none';
+            document.getElementById('successContainer').classList.add('active');
+            createSuccessHearts();
+        }
+
+        function handleNo() {
+            noClickCount++;
+            yesButtonScale += 0.2;
+            
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            
+            noBtn.textContent = noTexts[Math.min(noClickCount, noTexts.length - 1)];
+            yesBtn.style.transform = 'scale(' + yesButtonScale + ')';
+            
+            const modalIndex = Math.min(noClickCount - 1, confirmationMessages.length - 1);
+            const message = confirmationMessages[modalIndex];
+            
+            document.querySelector('.modal-emoji').textContent = message.emoji;
+            document.querySelector('.modal-content h2').textContent = message.title;
+            document.querySelector('.modal-content p').textContent = message.text;
+            
+            document.getElementById('confirmModal').classList.add('active');
+        }
+
+        function handleModalYes() {
+            document.getElementById('confirmModal').classList.remove('active');
+            handleYes();
+        }
+
+        function handleModalNo() {
+            document.getElementById('confirmModal').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
