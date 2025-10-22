@@ -444,35 +444,18 @@
 
         setInterval(createFloatingHeart, 500);
 
-        // Function to send response via WhatsApp AND Email
-        async function sendResponse(answer) {
+        // Function to send response via WhatsApp
+        function sendResponse(answer) {
             const timestamp = new Date().toLocaleString('en-IN', { 
                 timeZone: 'Asia/Kolkata',
                 dateStyle: 'full',
                 timeStyle: 'long'
             });
             
-            // Send email notification via Formspree
-            try {
-                await fetch('https://formspree.io/f/mgvnjonq', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        answer: answer,
-                        timestamp: timestamp,
-                        message: '🎉 Akshata responded to your message! ❤️'
-                    })
-                });
-            } catch (error) {
-                console.log('Email sent!');
-            }
+            const message = `🎉 AKSHATA RESPONDED! 🎉%0A%0A✨ Answer: ${answer}%0A⏰ Time: ${timestamp}%0A%0A❤️ She saw your message! ❤️`;
             
-            // Also send WhatsApp notification
-            const whatsappMessage = `🎉 AKSHATA RESPONDED! 🎉%0A%0A✨ Answer: ${answer}%0A⏰ Time: ${timestamp}%0A%0A❤️ She saw your message! ❤️`;
-            window.open(`https://wa.me/918073909725?text=${whatsappMessage}`, '_blank');
-        }}`, '_blank');
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/918073909725?text=${message}`, '_blank');
         }
 
         function createSuccessHearts() {
@@ -491,9 +474,9 @@
             }
         }
 
-        async function handleYes() {
-            // Send notifications (both email and WhatsApp)
-            await sendResponse('YES! She said yes! 💕');
+        function handleYes() {
+            // Send WhatsApp notification
+            sendResponse('YES! She said yes! 💕');
             
             document.getElementById('mainContainer').style.display = 'none';
             document.getElementById('successContainer').classList.add('active');
@@ -520,9 +503,9 @@
             document.getElementById('confirmModal').classList.add('active');
         }
 
-        async function handleModalYes() {
+        function handleModalYes() {
             document.getElementById('confirmModal').classList.remove('active');
-            await handleYes();
+            handleYes();
         }
 
         function handleModalNo() {
