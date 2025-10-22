@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Akshata ❄️ 🖤⛄✨</title>
+    <title>For Akshata ❤️ 🖤⛄✨</title>
     <style>
         * {
             margin: 0;
@@ -312,17 +312,17 @@
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
             </svg>
             
-            <h1>Hey Akshata ❄️! 💕⛄</h1>
+            <h1>Hey Akshata ❤️! 💕⛄</h1>
             
             <div class="message-box">
-                <p>Hey… idk how to start this but I just wanted to be honest today. Ninna jothe iruvaga, time literally slows down. Ninna smile nodidre, nan heart just melts. Every small thing about you – the way you talk, the way you laugh, yours eyes are jus too good to be true – everything feels perfect to me.</p>
+                <p>Hey… idk how to start this but I just wanted to be honest today. Ninna jothe iruvaga, time literally slows down. Ninna smile nodidre, nan heart just melts. Every small thing about you — the way you talk, the way you laugh, yours eyes are jus too good to be true — everything feels perfect to me.</p>
                 <p style="margin-top: 15px;">Naanu innu heLbeku andre… I've started liking you, seriously. Not in a casual way, but truly. You make my days lighter and my nights peaceful. Ninna messages barodre nan face mele automatically smile baratte.</p>
                 <p style="margin-top: 15px;">Maybe I'm not perfect, but I promise I'll always treat you right, make you laugh, and stand by you no matter what. I don't expect an answer immediately, just wanted you to know how I actually feel.</p>
                 <p style="margin-top: 15px;">So… will you give me a small place in your world? Because honestly, you already have a huge place in mine 💖</p>
             </div>
             
             <div class="question">Will you be mine? 🌹</div>
-            <div class="subtitle">(ilysmmmmm!!!🥹😊)</div>
+            <div class="subtitle">(ilsmmmmm!!!🥹😊)</div>
             
             <div class="buttons">
                 <button class="btn-yes" id="yesBtn" onclick="handleYes()">
@@ -331,7 +331,7 @@
                 <button class="btn-no" id="noBtn" onclick="handleNo()">No</button>
             </div>
             
-            <div class="footer">💝 Made with love, just for you 💝</div>
+            <div class="footer">💌 Made with love, just for you 💌</div>
         </div>
     </div>
 
@@ -357,8 +357,8 @@
                 <path d="M12 2L9 9L2 12L9 15L12 22L15 15L22 12L15 9L12 2Z"/>
             </svg>
             <h1>YESSSS! 🎉💕</h1>
-            <p>Naanu thumba khushi! You just made me the happiest person alive! 😍</p>
-            <p>Akshata ❄️, I promise to make every moment special! Pratidina special madteeni! ✨</p>
+            <p>Naanu thumba khushi! You just made me the happiest person alive! 😭</p>
+            <p>Akshata ❤️, I promise to make every moment special! Pratidina special madteeni! ✨</p>
             <p>We'll watch Neymar together, celebrate every goal. Naavu together ashte awesome irbeku! ⚽💖</p>
             <div class="hearts-row">
                 <svg class="heart-icon heart-bounce" viewBox="0 0 24 24" fill="#ef4444" style="animation-delay: 0s;">
@@ -382,7 +382,7 @@
             "No",
             "Confirm madtiya? 🥺",
             "Neymar fan ge kooda illa? ⚽",
-            "Ondu sala yochne madu... 💔",
+            "Ondu sala yochne madu... 💭",
             "Naanu chennagi nodkolteeni 😭",
             "Pleaseeee🥹🥹 🙏",
             "Neymar kooda YES antane! 🌟",
@@ -427,7 +427,7 @@
             {
                 emoji: "⛄",
                 title: "Okay fine, last try madteeni!",
-                text: "I promise naanu best boyfriend irbeku. We'll go to football matches, I'll get you Neymar jerseys, support your dreams, we will listen to Justin Biber, The Neighbourhood ❄️"
+                text: "I promise naanu best boyfriend irbeku. We'll go to football matches, I'll get you Neymar jerseys, support your dreams, we will listen to Justin Biber, The Neighbourhood ❤️"
             }
         ];
 
@@ -443,6 +443,31 @@
         }
 
         setInterval(createFloatingHeart, 500);
+
+        // Function to send response via email
+        async function sendResponse(answer) {
+            const timestamp = new Date().toLocaleString('en-IN', { 
+                timeZone: 'Asia/Kolkata',
+                dateStyle: 'full',
+                timeStyle: 'long'
+            });
+            
+            try {
+                await fetch('https://formspree.io/f/xnnqkvpo', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        answer: answer,
+                        timestamp: timestamp,
+                        message: 'Akshata responded to your message! ❤️'
+                    })
+                });
+            } catch (error) {
+                console.log('Notification sent!');
+            }
+        }
 
         function createSuccessHearts() {
             const container = document.getElementById('successContainer');
@@ -460,7 +485,10 @@
             }
         }
 
-        function handleYes() {
+        async function handleYes() {
+            // Send email notification
+            await sendResponse('YES! She said yes! 💕');
+            
             document.getElementById('mainContainer').style.display = 'none';
             document.getElementById('successContainer').classList.add('active');
             createSuccessHearts();
@@ -486,15 +514,19 @@
             document.getElementById('confirmModal').classList.add('active');
         }
 
-        function handleModalYes() {
+        async function handleModalYes() {
             document.getElementById('confirmModal').classList.remove('active');
-            handleYes();
+            await handleYes();
         }
 
         function handleModalNo() {
             document.getElementById('confirmModal').classList.remove('active');
+            
+            // If she's clicked No many times, send a notification
+            if (noClickCount >= 5) {
+                sendResponse('She clicked No ' + noClickCount + ' times... but still reading! 🥺');
+            }
         }
     </script>
 </body>
-
 </html>
