@@ -474,9 +474,9 @@
             }
         }
 
-        function handleYes() {
-            // Send WhatsApp notification
-            sendResponse('YES! She said yes! 💕');
+        async function handleYes() {
+            // Send email notification
+            await sendResponse('YES! She said yes! 💕');
             
             document.getElementById('mainContainer').style.display = 'none';
             document.getElementById('successContainer').classList.add('active');
@@ -503,9 +503,9 @@
             document.getElementById('confirmModal').classList.add('active');
         }
 
-        function handleModalYes() {
+        async function handleModalYes() {
             document.getElementById('confirmModal').classList.remove('active');
-            handleYes();
+            await handleYes();
         }
 
         function handleModalNo() {
